@@ -7,14 +7,14 @@ import { setList } from "../redux/posts-selectors";
 
 const List = () => {
 	const dispatch = useDispatch()
-	useEffect(() => {
-		dispatch(getList())
-	}, [])
 	const navigate = useNavigate()
 	const list = useSelector(setList)
 	const openPost = (id: number) => {
 		navigate(`/posts/${id}`)
 	}
+	useEffect(() => {
+		dispatch(getList())
+	}, [])
 	if (list.length > 0) return <>
 		{list.map(post =>
 			<Card key={post.id} sx={{ minWidth: 275, p: 2, m: 2 }}>

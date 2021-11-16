@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import { useFormik } from "formik";
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 import * as Yup from 'yup'
 import { createPost } from "../redux/posts-reducer";
 type Tprops = {
@@ -11,6 +12,7 @@ type Tprops = {
 }
 const CreateModal: React.FC<Tprops> = ({ handleClose, open }) => {
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 	const formik = useFormik({
 		initialValues: {
 			title: '',
@@ -24,6 +26,7 @@ const CreateModal: React.FC<Tprops> = ({ handleClose, open }) => {
 			dispatch(createPost(values))
 			formik.resetForm()
 			handleClose()
+			navigate('/')
 		},
 	});
 	return <>

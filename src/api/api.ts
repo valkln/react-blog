@@ -1,3 +1,4 @@
+import { PostType } from './../types/types';
 import axios from "axios";
 import { postValuesType } from "../types/types";
 

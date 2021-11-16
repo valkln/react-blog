@@ -39,7 +39,7 @@ const CommentForm: React.FC<Tprops> = ({ setCommentForm, post }) => {
 			rows={3}
 			id="outlined-basic"
 			name='body'
-			label="text"
+			label="Your comment"
 			variant="outlined" />
 		<Box>
 			<Button variant='contained' type="submit"  >Submit</Button>

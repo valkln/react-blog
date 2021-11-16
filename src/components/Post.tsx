@@ -9,17 +9,17 @@ import UpdateModal from "./UpdateModal";
 import CommentForm from "./CommentForm";
 const Post = () => {
 	const params = useParams()
-	const dispatch = useDispatch()
-	const navigate = useNavigate()
-	let post = useSelector(setPost)
 	let id = Number(Object.values(params)[0])
-
 	useEffect(() => {
 		dispatch(getPost(id))
 	}, [])
-	const deleteClick = () => {
+	const dispatch = useDispatch()
+	const navigate = useNavigate()
+	let post = useSelector(setPost)
+
+	const deleteClick = async () => {
 		if (post) {
-			dispatch(deletePost(post.id))
+			await dispatch(deletePost(post.id))
 			navigate('/')
 		} else alert('something went wrong')
 	}

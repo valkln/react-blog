@@ -1,11 +1,10 @@
 import { Button, Modal, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useFormik } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
 import * as Yup from 'yup'
-import { updatePost } from "../redux/posts-reducer";
+import { getPost, updatePost } from "../redux/posts-reducer";
 import { PostWCommentsType } from "../types/types";
 type Tprops = {
 	handleClose: () => void,
@@ -77,7 +76,7 @@ const UpdateModal: React.FC<Tprops> = ({ post, handleClose, open }) => {
 						name='body'
 						label="text"
 						variant="outlined" />
-					<Button variant='contained' type="submit"  >Submit</Button>
+					<Button variant='contained' type="submit">Submit</Button>
 				</Box>
 			</Box>
 		</Modal>
