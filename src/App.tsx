@@ -1,20 +1,26 @@
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import List from './components/List'
 import { useDispatch } from 'react-redux';
 import { getList } from './redux/posts-reducer';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Post from './components/Post';
+import Header from './components/Header';
+import { Container } from '@mui/material';
 
 function App() {
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getList())
-  }, [])
   return (
-    <div className="App">
-      <List />
-    </div>
+    <BrowserRouter>
+      <div className="app">
+        <Header />
+        <Container maxWidth='lg'>
+          <Routes>
+            <Route path='/posts/:id' element={<Post />} />
+            <Route path='/' element={<List />} />
+          </Routes>
+        </Container>
+      </div>
+    </BrowserRouter>
   );
 }
-
 export default App;

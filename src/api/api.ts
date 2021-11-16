@@ -1,4 +1,5 @@
 import axios from "axios";
+import { postValuesType } from "../types/types";
 
 const instance = axios.create({
 	baseURL: 'https://bloggy-api.herokuapp.com/',
@@ -14,11 +15,11 @@ export const postAPI = {
 			.then(res => res.data)
 	},
 	createPost: (title: string, body: string) => {
-		return instance.post('posts', { data: title, body })
+		return instance.post('posts', { title, body })
 			.then(res => res.data)
 	},
 	updatePost: (id: number, title: string, body: string) => {
-		return instance.put(`posts/${id}`, { data: title, body })
+		return instance.put(`posts/${id}`, { title, body })
 			.then(res => res.data)
 	},
 	deletePost: (id: number) => {
@@ -28,7 +29,7 @@ export const postAPI = {
 }
 export const commentAPI = {
 	createComment: (postId: number, body: string) => {
-		return instance.post('comments', { data: postId, body })
+		return instance.post('comments', { postId, body })
 			.then(res => res.data)
 	}
 }
